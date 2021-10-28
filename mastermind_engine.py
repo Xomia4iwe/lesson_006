@@ -9,7 +9,7 @@ def make_a_number():
         random_number = str(randint(0, 9))
         if random_number not in _number:
             _number.append(random_number)
-    print(_number)
+
 
 
 def check_the_number(guess_number):

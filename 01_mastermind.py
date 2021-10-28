@@ -45,22 +45,26 @@
 
 import mastermind_engine
 from mastermind_engine import make_a_number, check_the_number
+from termcolor import cprint
 
 yes = ['Да', 'да', 'д', 'Yes', 'yes', 'y']
 make_a_number()
 i = 0
 while True:
     i += 1
-    print('Введите число ')
+    cprint('Введите четырехзначное число', color='cyan')
     guess_number = list(input())
-    check_the_number(guess_number=guess_number)
-    if guess_number == mastermind_engine._number:
-        print('Вы отгадали число за ', i, ' попыток')
-        resume = input('Хотите еще партию(Да/Нет)? ')
-        if resume in yes:
-            i = 0
-            make_a_number()
-            continue
-        else:
-            print('Удачного дня!')
-            break
+    if len(guess_number) == 4:
+        check_the_number(guess_number=guess_number)
+        if guess_number == mastermind_engine._number:
+            print('Вы отгадали число за ', i, ' попыток')
+            resume = input('Хотите еще партию(Да/Нет)? ')
+            if resume in yes:
+                i = 0
+                make_a_number()
+                continue
+            else:
+                cprint('Удачного дня!', color='red')
+                break
+    else:
+        cprint('Введите четырехзначное число', color='yellow')
